@@ -130,14 +130,16 @@ func (gpt *ChatGPT) doAPIRequestWithRetry(url, method string,
 		//fmt.Println("--------------------")
 		//fmt.Println("req", req.Header)
 		//fmt.Printf("response: %v", response)
-		logger.Debug("req", req.Header)
-
-		logger.Debugf("response %v", response)
+		logger.Debug(fmt.Sprintf("req.Header %v", req.Header))
+		logger.Debug(fmt.Sprintf("req.Method %s", req.Method))
+		logger.Debug(fmt.Sprintf("req.URL %s", req.URL))
+		logger.Debug(fmt.Sprintf("req.Body %v", requestBody))
+		logger.Debugf(fmt.Sprintf("response %v", response))
 		// read body
 		if err != nil || response.StatusCode < 200 || response.StatusCode >= 300 {
-
+			logger.Debugf(fmt.Sprintf("response.StatusCode %v", response.StatusCode))
 			body, _ := ioutil.ReadAll(response.Body)
-			fmt.Println("body", string(body))
+			logger.Debugf(fmt.Sprintf("body %v", string(body)))
 
 			gpt.Lb.SetAvailability(api.Key, false)
 			if retry == maxRetries {

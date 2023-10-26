@@ -1,2 +1,4 @@
 /apikey_usage.json
 *.pem
+config.yaml
+config-*.yaml

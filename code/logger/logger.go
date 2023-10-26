@@ -25,6 +25,7 @@ func init() {
 	//InfoLevel
 	//DebugLevel
 	logger.Level = logrus.InfoLevel
+	logger.Level = logrus.DebugLevel
 
 }
 

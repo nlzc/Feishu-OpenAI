@@ -102,8 +102,8 @@ func getViperStringValue(key string, defaultValue string) string {
 	return value
 }
 
-//OPENAI_KEY: sk-xxx,sk-xxx,sk-xxx
-//result:[sk-xxx sk-xxx sk-xxx]
+// OPENAI_KEY: sk-xxx,sk-xxx,sk-xxx
+// result:[sk-xxx sk-xxx sk-xxx]
 func getViperStringArray(key string, defaultValue []string) []string {
 	value := viper.GetString(key)
 	if value == "" {
@@ -165,8 +165,10 @@ func (config *Config) GetKeyFile() string {
 func filterFormatKey(keys []string) []string {
 	var result []string
 	for _, key := range keys {
-		if strings.HasPrefix(key, "sk-") || strings.HasPrefix(key,
-			"fk") || strings.HasPrefix(key, "fastgpt") {
+		if strings.HasPrefix(key, "sk-") ||
+			strings.HasPrefix(key, "sb-") ||
+			strings.HasPrefix(key, "fk") ||
+			strings.HasPrefix(key, "fastgpt") {
 			result = append(result, key)
 		}
 	}
